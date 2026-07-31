@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>회의록·주간리포트 초안 생성기 — 무료 실무 도구 | 실무 도구함</title>
+<meta name="description" content="지저분한 메모를 섹션별 회의록/주간 리포트 초안과 액션 아이템 표(담당·할 일·기한)로 정리.">
+<link rel="canonical" href="https://dasolin139.github.io/toolhub/tools/meeting-notes-draft/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="회의록·주간리포트 초안 생성기 — 무료 실무 도구 | 실무 도구함">
+<meta property="og:description" content="지저분한 메모를 섹션별 회의록/주간 리포트 초안과 액션 아이템 표(담당·할 일·기한)로 정리.">
+<meta property="og:url" content="https://dasolin139.github.io/toolhub/tools/meeting-notes-draft/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fa;--card:#fff;--ink:#1a1d24;--muted:#5b6472;--line:#e3e7ee;
+  --brand:#2b5bd7;--brand-ink:#1c3f9c;--accent:#eef3ff;--warn:#b4530a;--warn-bg:#fff5eb;
+  --radius:14px;--maxw:940px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;
+  font-size:16px;word-break:keep-all;overflow-wrap:anywhere;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 64px}
+header.site{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.site .bar{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.logo span{color:var(--brand)}
+.nav a{font-size:14px;color:var(--muted);margin-left:14px}
+h1{font-size:26px;line-height:1.35;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:19px;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:16px;margin-bottom:8px}
+.hero{background:linear-gradient(180deg,var(--accent),transparent);border-radius:var(--radius);padding:26px 22px;margin:8px 0 6px}
+.hero h1{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card h3 a{color:var(--ink)}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:12px;color:var(--brand-ink);background:var(--accent);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pill.linter{background:#e8f0ff;color:var(--brand-ink)}
+.pill.generator{background:#eafaf0;color:#1a7a45}
+.pill.doc{background:#f2f0ff;color:#5b3fb0}
+.notice{background:var(--warn-bg);border:1px solid #f2d3ac;border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:#6b4415}
+.notice strong{color:var(--warn)}
+.notice ul{margin:6px 0 0 18px}
+.tool-io textarea{width:100%;min-height:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;resize:vertical}
+.tool-io textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button.primary:hover{background:var(--brand-ink)}
+button:hover{border-color:var(--brand)}
+pre.out{white-space:pre-wrap;word-break:break-word;background:#0f1420;color:#e6ebf5;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto;min-height:60px;margin-top:6px}
+pre.sample{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto}
+.muted-note{color:var(--muted);font-size:13px;margin:8px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--muted);font-size:13px;line-height:1.7}
+footer.site a{color:var(--muted);text-decoration:underline}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:6px}
+code{background:#eef1f6;border-radius:5px;padding:1px 5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+@media (max-width:600px){h1{font-size:22px}.wrap{padding:18px 14px 48px}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"회의록·주간리포트 초안 생성기","description":"지저분한 메모를 섹션별 회의록/주간 리포트 초안과 액션 아이템 표(담당·할 일·기한)로 정리.","applicationCategory":"BusinessApplication","operatingSystem":"CLI (Node.js)","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="logo" href="../../index.html" data-hub><span>실무</span> 도구함</a>
+  <nav class="nav"><a href="../../index.html" data-hub>전체 도구</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="crumbs"><a href="../../index.html">전체 도구</a> · 문서 작성 도구</div>
+<h1>회의록·주간리포트 초안 생성기</h1>
+<p class="lead">지저분한 메모를 섹션별 회의록/주간 리포트 초안과 액션 아이템 표(담당·할 일·기한)로 정리.</p>
+<p>지저분한 회의 메모나 한 주 업무 메모를 붙여 넣으면, 섹션별로 정리된 회의록 또는 주간 업무 리포트 초안과 액션 아이템 표(담당·할 일·기한)를 만들어 준다.</p>
+<div class="tags" style="margin:10px 0 4px"><span class="tag">회의록 작성</span><span class="tag">주간 리포트</span><span class="tag">액션 아이템</span><span class="tag">회의 메모 정리</span><span class="tag">업무 보고</span><span class="tag">미팅 노트</span></div>
+
+
+
+<div class="notice">
+  <strong>이 도구는 명령줄(CLI) 도구입니다.</strong> 아래는 실제 실행 예시 출력입니다.
+  <code>node src/cli.js --demo minutes</code> 로 직접 실행할 수 있습니다.
+</div>
+
+<h2>실행 예시 출력</h2>
+<pre class="sample"># 회의록: 제목 미정
+
+- 일시: 미정
+- 참석자: 미정
+
+## 논의 사항
+- 김철수 팀장: 이번 상세페이지 개편 방향 논의
+- 예산 관련 우려 있음, 추가 검토 필요
+
+## 결정 사항
+- 신규 랜딩 카피는 A안으로 가기로 결정
+- 가격표는 3단계 구성으로 확정
+
+## 액션 아이템
+| 담당 | 할 일 | 기한 |
+| --- | --- | --- |
+| 이영희 | 담당: 이영희 / 금요일까지 상세페이지 초안 작성 | 금요일까지 |
+| 박민수 | @박민수 다음 주 화요일까지 경쟁사 3곳 가격 조사 | 다음 주 화요일까지 |</pre>
+
+<footer class="site">
+  <p><a href="../../index.html">← 전체 도구 목록</a></p>
+  <p>무의존성·오프라인·결정론적. · MIT License · 소스: <a href="https://github.com/dasolin139/toolhub">https://github.com/dasolin139/toolhub</a></p>
+</footer>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>무료 한국 실무 자가점검·문서 도구 모음 | 실무 도구함</title>
+<meta name="description" content="보도자료·채용공고·광고·개인정보처리방침·전자상거래 표시의무를 배포 전 직접 점검하는 무료 린터와 CS·카피·회의록·제안서 문서 도구 모음. 오프라인·결정론.">
+<link rel="canonical" href="https://dasolin139.github.io/toolhub/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="무료 한국 실무 자가점검·문서 도구 모음 | 실무 도구함">
+<meta property="og:description" content="보도자료·채용공고·광고·개인정보처리방침·전자상거래 표시의무를 배포 전 직접 점검하는 무료 린터와 CS·카피·회의록·제안서 문서 도구 모음. 오프라인·결정론.">
+<meta property="og:url" content="https://dasolin139.github.io/toolhub/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fa;--card:#fff;--ink:#1a1d24;--muted:#5b6472;--line:#e3e7ee;
+  --brand:#2b5bd7;--brand-ink:#1c3f9c;--accent:#eef3ff;--warn:#b4530a;--warn-bg:#fff5eb;
+  --radius:14px;--maxw:940px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;
+  font-size:16px;word-break:keep-all;overflow-wrap:anywhere;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 64px}
+header.site{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.site .bar{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.logo span{color:var(--brand)}
+.nav a{font-size:14px;color:var(--muted);margin-left:14px}
+h1{font-size:26px;line-height:1.35;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:19px;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:16px;margin-bottom:8px}
+.hero{background:linear-gradient(180deg,var(--accent),transparent);border-radius:var(--radius);padding:26px 22px;margin:8px 0 6px}
+.hero h1{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card h3 a{color:var(--ink)}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:12px;color:var(--brand-ink);background:var(--accent);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pill.linter{background:#e8f0ff;color:var(--brand-ink)}
+.pill.generator{background:#eafaf0;color:#1a7a45}
+.pill.doc{background:#f2f0ff;color:#5b3fb0}
+.notice{background:var(--warn-bg);border:1px solid #f2d3ac;border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:#6b4415}
+.notice strong{color:var(--warn)}
+.notice ul{margin:6px 0 0 18px}
+.tool-io textarea{width:100%;min-height:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;resize:vertical}
+.tool-io textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button.primary:hover{background:var(--brand-ink)}
+button:hover{border-color:var(--brand)}
+pre.out{white-space:pre-wrap;word-break:break-word;background:#0f1420;color:#e6ebf5;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto;min-height:60px;margin-top:6px}
+pre.sample{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto}
+.muted-note{color:var(--muted);font-size:13px;margin:8px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--muted);font-size:13px;line-height:1.7}
+footer.site a{color:var(--muted);text-decoration:underline}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:6px}
+code{background:#eef1f6;border-radius:5px;padding:1px 5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+@media (max-width:600px){h1{font-size:22px}.wrap{padding:18px 14px 48px}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"무료 한국 실무 자가점검·문서 도구 모음","itemListElement":[{"@type":"ListItem","position":1,"url":"https://dasolin139.github.io/toolhub/tools/press-release-lint/","name":"보도자료 자가점검 린터"},{"@type":"ListItem","position":2,"url":"https://dasolin139.github.io/toolhub/tools/gov-grant-check/","name":"정부지원 사업계획서 자가검증 린터"},{"@type":"ListItem","position":3,"url":"https://dasolin139.github.io/toolhub/tools/job-posting-lint/","name":"채용공고 자가점검 린터"},{"@type":"ListItem","position":4,"url":"https://dasolin139.github.io/toolhub/tools/ad-copy-lint/","name":"표시·광고 금지표현 자가검증 린터"},{"@type":"ListItem","position":5,"url":"https://dasolin139.github.io/toolhub/tools/privacy-policy-lint/","name":"개인정보처리방침 필수기재 자가검증 린터"},{"@type":"ListItem","position":6,"url":"https://dasolin139.github.io/toolhub/tools/ec-notice-lint/","name":"전자상거래 법정 표시의무 자가검증 린터"},{"@type":"ListItem","position":7,"url":"https://dasolin139.github.io/toolhub/tools/seller-cs-reply/","name":"셀러 CS 응대 문구 생성기"},{"@type":"ListItem","position":8,"url":"https://dasolin139.github.io/toolhub/tools/marketing-copy/","name":"마케팅 카피 생성기"},{"@type":"ListItem","position":9,"url":"https://dasolin139.github.io/toolhub/tools/meeting-notes-draft/","name":"회의록·주간리포트 초안 생성기"},{"@type":"ListItem","position":10,"url":"https://dasolin139.github.io/toolhub/tools/proposal-outline/","name":"제안서 골격 생성기"},{"@type":"ListItem","position":11,"url":"https://dasolin139.github.io/toolhub/tools/assessment-draft/","name":"평가문항 출제 골격 생성기"},{"@type":"ListItem","position":12,"url":"https://dasolin139.github.io/toolhub/tools/capacity-check/","name":"주간 업무량 현실성 검증기"}]}</script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="logo" href="index.html"><span>실무</span> 도구함</a>
+  <nav class="nav"><a href="index.html">전체 도구</a></nav>
+</div></header>
+<main class="wrap">
+
+<section class="hero">
+  <h1>무료 한국 실무 자가점검·문서 도구 모음</h1>
+  <p class="lead">보도자료·채용공고·광고 문구·개인정보처리방침·쇼핑몰 표시의무를 <strong>배포 전에 직접 점검</strong>하고,
+  CS 답변·마케팅 카피·회의록·제안서·평가문항 초안을 빠르게 잡아 주는 실무 도구 모음입니다.</p>
+  <p class="lead">모두 <strong>무료·오프라인·결정론적</strong>이며, 린터는 브라우저에서 바로 실행되고 입력 텍스트는 서버로 전송되지 않습니다.</p>
+</section>
+
+<div class="notice">
+  <strong>안내</strong> · 린터 도구는 법률자문이 아니라 참고용 자가점검 체크리스트입니다. 결과는 법적 판정(위법/합법/통과/준수)이 아니며, 규칙에 없는 표현은 탐지되지 않습니다(미탐 가능).
+</div>
+
+<h2>법정 자가점검 린터</h2>
+<div class="grid">
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill linter">브라우저 실행</span></div>
+  <h3><a href="tools/press-release-lint/index.html">보도자료 자가점검 린터</a></h3>
+  <p>기자가 걸러내는 과장 표현·필수 요소 누락·리드 구조 결함을 배포 전에 잡아줍니다.</p>
+  <div class="tags"><span class="tag">보도자료 작성법</span><span class="tag">보도자료 검사</span><span class="tag">보도자료 필수요소</span><span class="tag">과장표현 검사</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/gov-grant-check/index.html">정부지원 사업계획서 자가검증 린터</a></h3>
+  <p>예비/초기창업패키지 제출 전 형식·완결성·예산 산술 정합성을 확정적으로 자가검증.</p>
+  <div class="tags"><span class="tag">예비창업패키지</span><span class="tag">초기창업패키지</span><span class="tag">사업계획서 검증</span><span class="tag">정부지원 사업계획서</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill linter">브라우저 실행</span></div>
+  <h3><a href="tools/job-posting-lint/index.html">채용공고 자가점검 린터</a></h3>
+  <p>생성 도구가 못 잡는 차별·개인정보 요구(연령·성별·용모·혼인) 위법 표현 후보를 근거 법령과 함께 검출.</p>
+  <div class="tags"><span class="tag">채용공고 작성법</span><span class="tag">채용공고 위법</span><span class="tag">차별 표현</span><span class="tag">채용절차법</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill linter">브라우저 실행</span></div>
+  <h3><a href="tools/ad-copy-lint/index.html">표시·광고 금지표현 자가검증 린터</a></h3>
+  <p>과장·거짓·기만 표현(최상급·절대·비교·의약품 오인) 후보를 근거 법령과 함께 검출. (예시는 general 업종 기준)</p>
+  <div class="tags"><span class="tag">광고 금지표현</span><span class="tag">표시광고법</span><span class="tag">과장광고</span><span class="tag">부당광고</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill linter">브라우저 실행</span></div>
+  <h3><a href="tools/privacy-policy-lint/index.html">개인정보처리방침 필수기재 자가검증 린터</a></h3>
+  <p>「개인정보 보호법」 §30·작성지침이 명문 열거한 법정 필수 기재 항목의 존재/미감지를 자가점검.</p>
+  <div class="tags"><span class="tag">개인정보처리방침</span><span class="tag">개인정보 보호법</span><span class="tag">필수기재 항목</span><span class="tag">처리방침 작성</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill linter">법정 자가점검 린터</span><span class="pill linter">브라우저 실행</span></div>
+  <h3><a href="tools/ec-notice-lint/index.html">전자상거래 법정 표시의무 자가검증 린터</a></h3>
+  <p>전자상거래법 §10·§13이 명문 열거한 표시항목(청약철회·교환반품·배송·결제·분쟁처리 등)의 존재/미감지를 자가점검.</p>
+  <div class="tags"><span class="tag">전자상거래법</span><span class="tag">쇼핑몰 표시의무</span><span class="tag">통신판매업 신고번호</span><span class="tag">청약철회</span></div>
+</div>
+</div>
+
+<h2>문서 작성 도구</h2>
+<div class="grid">
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/seller-cs-reply/index.html">셀러 CS 응대 문구 생성기</a></h3>
+  <p>배송·환불·클레임 등 반복 CS 문의에 대한 유형·상황·톤별 한국어 답변 초안 생성.</p>
+  <div class="tags"><span class="tag">CS 응대 문구</span><span class="tag">셀러 고객응대</span><span class="tag">배송지연 안내</span><span class="tag">환불 응대</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/marketing-copy/index.html">마케팅 카피 생성기</a></h3>
+  <p>제품 정보 몇 줄로 상세페이지·SNS·광고 헤드라인을 PAS/AIDA/FAB/BAB 프레임워크로 생성.</p>
+  <div class="tags"><span class="tag">상세페이지 카피</span><span class="tag">SNS 캡션</span><span class="tag">광고 헤드라인</span><span class="tag">카피라이팅</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/meeting-notes-draft/index.html">회의록·주간리포트 초안 생성기</a></h3>
+  <p>지저분한 메모를 섹션별 회의록/주간 리포트 초안과 액션 아이템 표(담당·할 일·기한)로 정리.</p>
+  <div class="tags"><span class="tag">회의록 작성</span><span class="tag">주간 리포트</span><span class="tag">액션 아이템</span><span class="tag">회의 메모 정리</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/proposal-outline/index.html">제안서 골격 생성기</a></h3>
+  <p>사업/입찰/영업 제안서 유형별 목차 + 섹션 작성 질문 + 제출 전 체크리스트 초안.</p>
+  <div class="tags"><span class="tag">제안서 작성법</span><span class="tag">입찰 제안서</span><span class="tag">사업 제안서</span><span class="tag">제안서 목차</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/assessment-draft/index.html">평가문항 출제 골격 생성기</a></h3>
+  <p>문항 유형별 골격 + 이원목적분류표 + 정답표 + 서술형 채점기준 + 배점 합계 검증.</p>
+  <div class="tags"><span class="tag">평가문항 출제</span><span class="tag">시험문제 작성</span><span class="tag">이원목적분류표</span><span class="tag">채점기준</span></div>
+</div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill generator">문서 작성 도구</span><span class="pill doc">CLI · 예시 보기</span></div>
+  <h3><a href="tools/capacity-check/index.html">주간 업무량 현실성 검증기</a></h3>
+  <p>가용 시간 대비 실질 필요 공수(오버헤드 포함)로 '이번 주 물리적 가능 여부'를 판정하고 협의 문장 초안 생성.</p>
+  <div class="tags"><span class="tag">업무량 관리</span><span class="tag">주간 업무 계획</span><span class="tag">공수 산정</span><span class="tag">번아웃 방지</span></div>
+</div>
+</div>
+
+</main>
+
+</body>
+</html>

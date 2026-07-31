@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>제안서 골격 생성기 — 무료 실무 도구 | 실무 도구함</title>
+<meta name="description" content="사업/입찰/영업 제안서 유형별 목차 + 섹션 작성 질문 + 제출 전 체크리스트 초안.">
+<link rel="canonical" href="https://dasolin139.github.io/toolhub/tools/proposal-outline/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="제안서 골격 생성기 — 무료 실무 도구 | 실무 도구함">
+<meta property="og:description" content="사업/입찰/영업 제안서 유형별 목차 + 섹션 작성 질문 + 제출 전 체크리스트 초안.">
+<meta property="og:url" content="https://dasolin139.github.io/toolhub/tools/proposal-outline/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fa;--card:#fff;--ink:#1a1d24;--muted:#5b6472;--line:#e3e7ee;
+  --brand:#2b5bd7;--brand-ink:#1c3f9c;--accent:#eef3ff;--warn:#b4530a;--warn-bg:#fff5eb;
+  --radius:14px;--maxw:940px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;
+  font-size:16px;word-break:keep-all;overflow-wrap:anywhere;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 64px}
+header.site{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.site .bar{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.logo span{color:var(--brand)}
+.nav a{font-size:14px;color:var(--muted);margin-left:14px}
+h1{font-size:26px;line-height:1.35;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:19px;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:16px;margin-bottom:8px}
+.hero{background:linear-gradient(180deg,var(--accent),transparent);border-radius:var(--radius);padding:26px 22px;margin:8px 0 6px}
+.hero h1{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card h3 a{color:var(--ink)}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:12px;color:var(--brand-ink);background:var(--accent);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pill.linter{background:#e8f0ff;color:var(--brand-ink)}
+.pill.generator{background:#eafaf0;color:#1a7a45}
+.pill.doc{background:#f2f0ff;color:#5b3fb0}
+.notice{background:var(--warn-bg);border:1px solid #f2d3ac;border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:#6b4415}
+.notice strong{color:var(--warn)}
+.notice ul{margin:6px 0 0 18px}
+.tool-io textarea{width:100%;min-height:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;resize:vertical}
+.tool-io textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button.primary:hover{background:var(--brand-ink)}
+button:hover{border-color:var(--brand)}
+pre.out{white-space:pre-wrap;word-break:break-word;background:#0f1420;color:#e6ebf5;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto;min-height:60px;margin-top:6px}
+pre.sample{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto}
+.muted-note{color:var(--muted);font-size:13px;margin:8px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--muted);font-size:13px;line-height:1.7}
+footer.site a{color:var(--muted);text-decoration:underline}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:6px}
+code{background:#eef1f6;border-radius:5px;padding:1px 5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+@media (max-width:600px){h1{font-size:22px}.wrap{padding:18px 14px 48px}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"제안서 골격 생성기","description":"사업/입찰/영업 제안서 유형별 목차 + 섹션 작성 질문 + 제출 전 체크리스트 초안.","applicationCategory":"BusinessApplication","operatingSystem":"CLI (Node.js)","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="logo" href="../../index.html" data-hub><span>실무</span> 도구함</a>
+  <nav class="nav"><a href="../../index.html" data-hub>전체 도구</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="crumbs"><a href="../../index.html">전체 도구</a> · 문서 작성 도구</div>
+<h1>제안서 골격 생성기</h1>
+<p class="lead">사업/입찰/영업 제안서 유형별 목차 + 섹션 작성 질문 + 제출 전 체크리스트 초안.</p>
+<p>빈 화면 앞에서 무엇을 어디에 써야 하는지 몰라 타사 제안서를 짜깁기하는 실무자를 위해, 제안서 유형별 목차 + 섹션별 작성 질문 + 제출 전 체크리스트 초안을 만들어 주는 무의존성 도구.</p>
+<div class="tags" style="margin:10px 0 4px"><span class="tag">제안서 작성법</span><span class="tag">입찰 제안서</span><span class="tag">사업 제안서</span><span class="tag">제안서 목차</span><span class="tag">RFP 대응</span><span class="tag">제안서 체크리스트</span></div>
+
+
+
+<div class="notice">
+  <strong>이 도구는 명령줄(CLI) 도구입니다.</strong> 아래는 실제 실행 예시 출력입니다.
+  <code>node src/cli.js --demo bid</code> 로 직접 실행할 수 있습니다.
+</div>
+
+<h2>실행 예시 출력</h2>
+<pre class="sample"># 입찰제안서 — 차세대 정보시스템 구축
+
+- 제안 대상(고객사): ○○공공기관
+- 사업/제안명: 차세대 정보시스템 구축
+- 제출 기한: 2026-03-15
+- 제안사: 다솔린
+
+## 목차
+
+1. 제안 개요
+2. 사업 이해 및 요구사항 분석
+3. 요구사항 대응
+4. 기술 및 수행 방안
+5. 추진 일정 및 산출물
+6. 투입 인력 및 조직
+7. 수행 실적
+8. 가격 제안
+
+## 1. 제안 개요
+
+_사업 이해와 제안사 요약 — 평가위원의 첫인상._
+
+**작성 질문:**
+- 발주처의 사업 목적을 정확히 이해했음을 한 문단으로?
+- 제안사가 이 사업의 최적 파트너인 이유는?
+
+&gt; _(여기에 작성)_
+
+
+## 2. 사업 이해 및 요구사항 분석
+
+_RFP를 얼마나 깊이 이해했는지 — 핵심 이슈와 성공 요인._
+
+**작성 질문:**
+- 발주처가 진짜 원하는 것(명시+숨은 니즈)은?
+- 사업의 핵심 이슈·난제와 성공 요인(CSF)은?
+- 우리가 파악한 리스크는?
+
+&gt; _(여기에 작성)_
+
+
+## 3. 요구사항 대응
+
+_RFP 평가항목별로 어떻게 충족하는지 대응표로 명확히(가장 배점 큰 부분)._
+
+**작성 질문:**
+- 평가항목별 대응 논리와 근거는?
+- 필수 요건 중 미충족 항목은 없는가?
+
+| 평가항목 | 대응 섹션 | 대응 포인트 |
+|---|---|---|
+| 사업 이해도 | 사업 이해 및 요구사항 분석 | _(작성)_ |
+| 기술 및 수행방안 | 기술 및 수행 방안 | _(작성)_ |
+| 투입인력 | 투입 인력 및 조직 | _(작성)_ |
+| 수행실적 | 수행 실적 | _(작성)_ |
+| 가격 | 가격 제안 | _(작성)_ |
+
+
+## 4. 기술 및 수행 방안
+
+_방법론·아키텍처·품질관리로 실행력을 증명._
+
+**작성 질문:**
+- 적용할 방법론/기술과 선택 이유는?
+- 품질·보안·일정 관리 체계는?
+- 타사 대비 기술적 우위는?
+
+&gt; _(여기에 작성)_
+
+
+## 5. 추진 일정 및 산출물
+
+_WBS·마일스톤·단계별 산출물로 실행 가능성을 보여줌._
+
+**작성 질문:**
+- 전체 일정(WBS)과 마일스톤은?
+- 단계별 산출물과 검수 기준은?
+
+&gt; _(여기에 작성)_
+
+
+## 6. 투입 인력 및 조직
+
+_배점이 큰 항목 — 핵심 인력의 자격·경력을 증빙과 함께._
+
+**작성 질문:**
+- 투입 조직도와 등급별 인원은?
+- 핵심 인력의 자격증·유사 사업 경력은?
+- 인력 투입 기간(M/M)은 요구 수준을 충족하나?
+
+&gt; _(여기에 작성)_
+
+
+## 7. 수행 실적
+
+_유사·동종 사업 실적으로 신뢰를 확보._
+
+**작성 질문:**
+- 동일·유사 사업 실적(규모·발주처·기간)은?
+- 실적 증빙(계약서·확인서) 준비는 되었나?
+
+&gt; _(여기에 작성)_
+
+
+## 8. 가격 제안
+
+_산출 내역과 가격 경쟁력 — 규정 준수가 우선._
+
+**작성 질문:**
+- 가격 산출 내역과 근거는?
+- 예정가격/추정가격 대비 경쟁력은?
+- 입찰 가격 규정(하한율 등)을 준수했나?
+
+&gt; _(여기에 작성)_
+
+
+## 제출 전 체크리스트
+
+- [ ] RFP 필수 요건을 하나도 빠짐없이 대응했는가
+- [ ] 요구사항 대응표가 평가항목 순서와 일치하는가
+- [ ] 제출 서식·분량·폰트 규정을 지켰는가
+- [ ] 핵심 인력 자격 증빙이 첨부되었는가
+- [ ] 가격이 입찰 규정(하한율·상한)을 위반하지 않는가
+- [ ] 제출 기한·방법(전자입찰 등)을 확인했는가
+- [ ] 발주처명·사업명이 전 페이지에서 정확한가(타사 제안서 흔적 제거)
+
+---
+
+_이 골격은 빈 화면 대신 '무엇을 어디에 쓸지'를 안내하기 위한 초안입니다. 각 섹션의 작성 질문에 답하며 내용을 채우세요._</pre>
+
+<footer class="site">
+  <p><a href="../../index.html">← 전체 도구 목록</a></p>
+  <p>무의존성·오프라인·결정론적. · MIT License · 소스: <a href="https://github.com/dasolin139/toolhub">https://github.com/dasolin139/toolhub</a></p>
+</footer>
+
+</main>
+
+</body>
+</html>

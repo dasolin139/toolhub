@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>마케팅 카피 생성기 — 무료 실무 도구 | 실무 도구함</title>
+<meta name="description" content="제품 정보 몇 줄로 상세페이지·SNS·광고 헤드라인을 PAS/AIDA/FAB/BAB 프레임워크로 생성.">
+<link rel="canonical" href="https://dasolin139.github.io/toolhub/tools/marketing-copy/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="마케팅 카피 생성기 — 무료 실무 도구 | 실무 도구함">
+<meta property="og:description" content="제품 정보 몇 줄로 상세페이지·SNS·광고 헤드라인을 PAS/AIDA/FAB/BAB 프레임워크로 생성.">
+<meta property="og:url" content="https://dasolin139.github.io/toolhub/tools/marketing-copy/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fa;--card:#fff;--ink:#1a1d24;--muted:#5b6472;--line:#e3e7ee;
+  --brand:#2b5bd7;--brand-ink:#1c3f9c;--accent:#eef3ff;--warn:#b4530a;--warn-bg:#fff5eb;
+  --radius:14px;--maxw:940px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;
+  font-size:16px;word-break:keep-all;overflow-wrap:anywhere;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 64px}
+header.site{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.site .bar{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.logo span{color:var(--brand)}
+.nav a{font-size:14px;color:var(--muted);margin-left:14px}
+h1{font-size:26px;line-height:1.35;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:19px;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:16px;margin-bottom:8px}
+.hero{background:linear-gradient(180deg,var(--accent),transparent);border-radius:var(--radius);padding:26px 22px;margin:8px 0 6px}
+.hero h1{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card h3 a{color:var(--ink)}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:12px;color:var(--brand-ink);background:var(--accent);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pill.linter{background:#e8f0ff;color:var(--brand-ink)}
+.pill.generator{background:#eafaf0;color:#1a7a45}
+.pill.doc{background:#f2f0ff;color:#5b3fb0}
+.notice{background:var(--warn-bg);border:1px solid #f2d3ac;border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:#6b4415}
+.notice strong{color:var(--warn)}
+.notice ul{margin:6px 0 0 18px}
+.tool-io textarea{width:100%;min-height:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;resize:vertical}
+.tool-io textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button.primary:hover{background:var(--brand-ink)}
+button:hover{border-color:var(--brand)}
+pre.out{white-space:pre-wrap;word-break:break-word;background:#0f1420;color:#e6ebf5;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto;min-height:60px;margin-top:6px}
+pre.sample{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto}
+.muted-note{color:var(--muted);font-size:13px;margin:8px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--muted);font-size:13px;line-height:1.7}
+footer.site a{color:var(--muted);text-decoration:underline}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:6px}
+code{background:#eef1f6;border-radius:5px;padding:1px 5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+@media (max-width:600px){h1{font-size:22px}.wrap{padding:18px 14px 48px}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"마케팅 카피 생성기","description":"제품 정보 몇 줄로 상세페이지·SNS·광고 헤드라인을 PAS/AIDA/FAB/BAB 프레임워크로 생성.","applicationCategory":"BusinessApplication","operatingSystem":"CLI (Node.js)","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="logo" href="../../index.html" data-hub><span>실무</span> 도구함</a>
+  <nav class="nav"><a href="../../index.html" data-hub>전체 도구</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="crumbs"><a href="../../index.html">전체 도구</a> · 문서 작성 도구</div>
+<h1>마케팅 카피 생성기</h1>
+<p class="lead">제품 정보 몇 줄로 상세페이지·SNS·광고 헤드라인을 PAS/AIDA/FAB/BAB 프레임워크로 생성.</p>
+<p>제품 정보 몇 줄만 입력하면 상세페이지 카피·SNS 홍보 캡션·광고 헤드라인을 검증된 카피라이팅 프레임워크(PAS/AIDA/FAB/BAB)에 태워 자연스러운 한국어로 한 번에 뽑아낸다.</p>
+<div class="tags" style="margin:10px 0 4px"><span class="tag">상세페이지 카피</span><span class="tag">SNS 캡션</span><span class="tag">광고 헤드라인</span><span class="tag">카피라이팅</span><span class="tag">PAS AIDA</span><span class="tag">제품 카피 생성</span></div>
+
+
+
+<div class="notice">
+  <strong>이 도구는 명령줄(CLI) 도구입니다.</strong> 아래는 실제 실행 예시 출력입니다.
+  <code>node src/cli.js all --product 포근 수면 아이마스크 --category 숙면 아이마스크 --target 잠귀 밝은 예민한 분 --problem 작은 불빛에도 잠에서 깨는 --benefit 아침까지 깨지 않는 깊은 잠 --feature1 빛을 99% 차단하는 3D 입체 설계 --feature2 얼굴을 누르지 않는 무압박 구조 --feature3 세탁해도 형태가 유지되는 메모리폼 --differentiator 안과 전문의와 함께 설계 --offer 지금 구매 시 여행용 파우치 증정</code> 로 직접 실행할 수 있습니다.
+</div>
+
+<h2>실행 예시 출력</h2>
+<pre class="sample">════════════════════════════════════
+[상세페이지 카피] · 톤: 신뢰·전문 · 프레임워크: PAS (문제·공감·해결)
+
+【 아침까지 깨지 않는 깊은 잠, 포근 수면 아이마스크가 증명합니다 】
+
+혹시 작은 불빛에도 잠에서 깨는 탓에 곤란하셨던 적 없으신가요?
+
+그대로 두면 같은 불편이 매번 반복되고, 시간과 비용만 조금씩 새어 나갑니다.
+
+포근 수면 아이마스크는 빛을 99% 차단하는 3D 입체 설계로 이 문제를 근본부터 해결합니다. 아침까지 깨지 않는 깊은 잠을 직접 경험하실 수 있습니다.
+
+[핵심 포인트]
+· 빛을 99% 차단하는 3D 입체 설계
+· 얼굴을 누르지 않는 무압박 구조
+· 세탁해도 형태가 유지되는 메모리폼
+
+안과 전문의와 함께 설계. 잠귀 밝은 예민한 분은 믿고 선택하셔도 좋습니다.
+
+▶ 지금 구매 시 여행용 파우치 증정. 지금 상세 정보를 확인해 보세요.
+
+════════════════════════════════════
+[SNS 홍보 캡션] · 톤: 신뢰·전문
+
+[검증된 선택] 아침까지 깨지 않는 깊은 잠, 이유 있는 인기.
+
+포근 수면 아이마스크는 빛을 99% 차단하는 3D 입체 설계로 아침까지 깨지 않는 깊은 잠까지 챙겼어요.
+
+👉 지금 구매 시 여행용 파우치 증정
+
+#숙면아이마스크 #포근수면아이마스크 #추천 #신상
+
+════════════════════════════════════
+[광고 헤드라인] · 톤: 신뢰·전문
+
+아침까지 깨지 않는 깊은 잠.
+
+작은 불빛에도 잠에서 깨는 고민, 이제 그만.
+
+빛을 99% 차단하는 3D 입체 설계, 이거 하나면 됩니다.
+
+잠귀 밝은 예민한 분이 포근 수면 아이마스크를 선택한 이유.
+
+안과 전문의와 함께 설계. 포근 수면 아이마스크.</pre>
+
+<footer class="site">
+  <p><a href="../../index.html">← 전체 도구 목록</a></p>
+  <p>무의존성·오프라인·결정론적. · MIT License · 소스: <a href="https://github.com/dasolin139/toolhub">https://github.com/dasolin139/toolhub</a></p>
+</footer>
+
+</main>
+
+</body>
+</html>

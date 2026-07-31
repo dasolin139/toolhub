@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>평가문항 출제 골격 생성기 — 무료 실무 도구 | 실무 도구함</title>
+<meta name="description" content="문항 유형별 골격 + 이원목적분류표 + 정답표 + 서술형 채점기준 + 배점 합계 검증.">
+<link rel="canonical" href="https://dasolin139.github.io/toolhub/tools/assessment-draft/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="평가문항 출제 골격 생성기 — 무료 실무 도구 | 실무 도구함">
+<meta property="og:description" content="문항 유형별 골격 + 이원목적분류표 + 정답표 + 서술형 채점기준 + 배점 합계 검증.">
+<meta property="og:url" content="https://dasolin139.github.io/toolhub/tools/assessment-draft/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<style>*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fa;--card:#fff;--ink:#1a1d24;--muted:#5b6472;--line:#e3e7ee;
+  --brand:#2b5bd7;--brand-ink:#1c3f9c;--accent:#eef3ff;--warn:#b4530a;--warn-bg:#fff5eb;
+  --radius:14px;--maxw:940px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",Segoe UI,Roboto,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;
+  font-size:16px;word-break:keep-all;overflow-wrap:anywhere;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:24px 18px 64px}
+header.site{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.site .bar{max-width:var(--maxw);margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:800;font-size:18px;color:var(--ink)}
+.logo span{color:var(--brand)}
+.nav a{font-size:14px;color:var(--muted);margin-left:14px}
+h1{font-size:26px;line-height:1.35;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:19px;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:16px;margin-bottom:8px}
+.hero{background:linear-gradient(180deg,var(--accent),transparent);border-radius:var(--radius);padding:26px 22px;margin:8px 0 6px}
+.hero h1{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.card h3 a{color:var(--ink)}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:12px;color:var(--brand-ink);background:var(--accent);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.pill.linter{background:#e8f0ff;color:var(--brand-ink)}
+.pill.generator{background:#eafaf0;color:#1a7a45}
+.pill.doc{background:#f2f0ff;color:#5b3fb0}
+.notice{background:var(--warn-bg);border:1px solid #f2d3ac;border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:#6b4415}
+.notice strong{color:var(--warn)}
+.notice ul{margin:6px 0 0 18px}
+.tool-io textarea{width:100%;min-height:180px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;resize:vertical}
+.tool-io textarea:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+button.primary:hover{background:var(--brand-ink)}
+button:hover{border-color:var(--brand)}
+pre.out{white-space:pre-wrap;word-break:break-word;background:#0f1420;color:#e6ebf5;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto;min-height:60px;margin-top:6px}
+pre.sample{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.65;overflow-x:auto}
+.muted-note{color:var(--muted);font-size:13px;margin:8px 0}
+footer.site{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--muted);font-size:13px;line-height:1.7}
+footer.site a{color:var(--muted);text-decoration:underline}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:6px}
+code{background:#eef1f6;border-radius:5px;padding:1px 5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+@media (max-width:600px){h1{font-size:22px}.wrap{padding:18px 14px 48px}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"평가문항 출제 골격 생성기","description":"문항 유형별 골격 + 이원목적분류표 + 정답표 + 서술형 채점기준 + 배점 합계 검증.","applicationCategory":"BusinessApplication","operatingSystem":"CLI (Node.js)","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="logo" href="../../index.html" data-hub><span>실무</span> 도구함</a>
+  <nav class="nav"><a href="../../index.html" data-hub>전체 도구</a></nav>
+</div></header>
+<main class="wrap">
+
+<div class="crumbs"><a href="../../index.html">전체 도구</a> · 문서 작성 도구</div>
+<h1>평가문항 출제 골격 생성기</h1>
+<p class="lead">문항 유형별 골격 + 이원목적분류표 + 정답표 + 서술형 채점기준 + 배점 합계 검증.</p>
+<p>강사·교육 담당자가 시험문제/평가문항을 매번 처음부터 반복 출제하는 부담을 줄인다. 문항 내용·정답은 지어내지 않고, 출제의 반복 구조(이원목적분류표·정답표·채점기준·배점 검증)를 자동으로 짜준다.</p>
+<div class="tags" style="margin:10px 0 4px"><span class="tag">평가문항 출제</span><span class="tag">시험문제 작성</span><span class="tag">이원목적분류표</span><span class="tag">채점기준</span><span class="tag">문항 배점</span><span class="tag">교안 평가</span></div>
+
+
+
+<div class="notice">
+  <strong>이 도구는 명령줄(CLI) 도구입니다.</strong> 아래는 실제 실행 예시 출력입니다.
+  <code>node src/cli.js --demo</code> 로 직접 실행할 수 있습니다.
+</div>
+
+<h2>실행 예시 출력</h2>
+<pre class="sample"># 평가문항 초안 — 1학기 중간평가
+
+- 과목/주제: 디지털 마케팅 기초
+- 출제자: 다솔린
+- 대상: 신입 마케터 교육 과정
+- 문항 수: 22문항
+- 총 배점: 100점
+
+## 유형별 구성 요약
+
+| 유형 | 문항 수 | 문항당 배점 | 소계 |
+|---|---|---|---|
+| 객관식(5지선다) | 10 | 5 | 50 |
+| 진위형(O/X) | 5 | 2 | 10 |
+| 단답형 | 5 | 4 | 20 |
+| 서술형 | 2 | 10 | 20 |
+| **합계** | **22** | - | **100** |
+
+## 배점 합계 검증
+
+- 총 문항 수: 22문항
+- 배점 합계: 100점
+- 목표 총점: 100점
+- ✅ 배점 합계가 목표 총점과 일치합니다.
+
+## 이원목적분류표
+
+_출제 전 문항↔학습목표↔난이도↔배점을 한눈에 검토·조정하세요. 학습목표는 자동 순환 배정된 제안이며 수정 가능합니다._
+
+| 문항 | 유형 | 학습목표 | 난이도 | 배점 |
+|---|---|---|---|---|
+| 1 | 객관식(5지선다) | STP 전략을 설명한다 | 상 | 5 |
+| 2 | 객관식(5지선다) | 마케팅 4P를 구분한다 | 상 | 5 |
+| 3 | 객관식(5지선다) | 퍼널 지표를 해석한다 | 상 | 5 |
+| 4 | 객관식(5지선다) | A/B 테스트를 설계한다 | 상 | 5 |
+| 5 | 객관식(5지선다) | STP 전략을 설명한다 | 상 | 5 |
+| 6 | 객관식(5지선다) | 마케팅 4P를 구분한다 | 중 | 5 |
+| 7 | 객관식(5지선다) | 퍼널 지표를 해석한다 | 중 | 5 |
+| 8 | 객관식(5지선다) | A/B 테스트를 설계한다 | 중 | 5 |
+| 9 | 객관식(5지선다) | STP 전략을 설명한다 | 중 | 5 |
+| 10 | 객관식(5지선다) | 마케팅 4P를 구분한다 | 중 | 5 |
+| 11 | 진위형(O/X) | 퍼널 지표를 해석한다 | 중 | 2 |
+| 12 | 진위형(O/X) | A/B 테스트를 설계한다 | 중 | 2 |
+| 13 | 진위형(O/X) | STP 전략을 설명한다 | 중 | 2 |
+| 14 | 진위형(O/X) | 마케팅 4P를 구분한다 | 중 | 2 |
+| 15 | 진위형(O/X) | 퍼널 지표를 해석한다 | 중 | 2 |
+| 16 | 단답형 | A/B 테스트를 설계한다 | 중 | 4 |
+| 17 | 단답형 | STP 전략을 설명한다 | 중 | 4 |
+| 18 | 단답형 | 마케팅 4P를 구분한다 | 하 | 4 |
+| 19 | 단답형 | 퍼널 지표를 해석한다 | 하 | 4 |
+| 20 | 단답형 | A/B 테스트를 설계한다 | 하 | 4 |
+| 21 | 서술형 | STP 전략을 설명한다 | 하 | 10 |
+| 22 | 서술형 | 마케팅 4P를 구분한다 | 하 | 10 |
+| **합계** | - | - | - | **100** |
+
+## 문항지
+
+### Ⅰ. 객관식(5지선다)
+
+**1.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**2.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**3.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**4.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**5.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**6.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**7.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**8.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**9.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+**10.** _(문항 줄기 작성)_ **(5점)**
+  ① _(보기)_
+  ② _(보기)_
+  ③ _(보기)_
+  ④ _(보기)_
+  ⑤ _(보기)_
+
+### Ⅱ. 진위형(O/X)
+
+**11.** _(진술문 작성)_  ( O / X )  **(2점)**
+
+**12.** _(진술문 작성)_  ( O / X )  **(2점)**
+
+**13.** _(진술문 작성)_  ( O / X )  **(2점)**
+
+**14.** _(진술문 작성)_  ( O / X )  **(2점)**
+
+**15.** _(진술문 작성)_  ( O / X )  **(2점)**
+
+### Ⅲ. 단답형
+
+**16.** _(질문 작성)_  **(4점)**
+  답: ______________________
+
+**17.** _(질문 작성)_  **(4점)**
+  답: ______________________
+
+**18.** _(질문 작성)_  **(4점)**
+  답: ______________________
+
+**19.** _(질문 작성)_  **(4점)**
+  답: ______________________
+
+**20.** _(질문 작성)_  **(4점)**
+  답: ______________________
+
+### Ⅳ. 서술형
+
+**21.** _(서술형 문제 작성)_  **(10점)**
+
+  _(답안 작성 공간)_
+
+**22.** _(서술형 문제 작성)_  **(10점)**
+
+  _(답안 작성 공간)_
+
+## 정답표
+
+_정답은 지어내지 않습니다. 각 문항의 정답을 직접 채우세요._
+
+| 문항 | 유형 | 정답 | 배점 |
+|---|---|---|---|
+| 1 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 2 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 3 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 4 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 5 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 6 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 7 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 8 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 9 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 10 | 객관식(5지선다) | ①~⑤ 중 _(정답 번호)_ | 5 |
+| 11 | 진위형(O/X) | O 또는 X _(정답)_ | 2 |
+| 12 | 진위형(O/X) | O 또는 X _(정답)_ | 2 |
+| 13 | 진위형(O/X) | O 또는 X _(정답)_ | 2 |
+| 14 | 진위형(O/X) | O 또는 X _(정답)_ | 2 |
+| 15 | 진위형(O/X) | O 또는 X _(정답)_ | 2 |
+| 16 | 단답형 | _(정답 작성)_ | 4 |
+| 17 | 단답형 | _(정답 작성)_ | 4 |
+| 18 | 단답형 | _(정답 작성)_ | 4 |
+| 19 | 단답형 | _(정답 작성)_ | 4 |
+| 20 | 단답형 | _(정답 작성)_ | 4 |
+| 21 | 서술형 | _(모범답안 요지 작성)_ | 10 |
+| 22 | 서술형 | _(모범답안 요지 작성)_ | 10 |
+| **합계** | - | - | **100** |
+
+## 서술형 채점 기준(부분점수)
+
+_채점 편차와 민원을 줄이려면 부분점수 기준을 미리 확정하세요._
+
+### 21번 서술형 (10점)
+- 모범답안 요지: _(작성)_
+- 상 (8~10점): _(우수 기준 작성)_
+- 중 (4~7점): _(보통 기준 작성)_
+- 하 (1~3점): _(미흡 기준 작성)_
+- 0점: 무응답 또는 문항과 무관한 서술
+
+### 22번 서술형 (10점)
+- 모범답안 요지: _(작성)_
+- 상 (8~10점): _(우수 기준 작성)_
+- 중 (4~7점): _(보통 기준 작성)_
+- 하 (1~3점): _(미흡 기준 작성)_
+- 0점: 무응답 또는 문항과 무관한 서술
+
+## 출제 전 검토 체크리스트
+
+- [ ] 모든 문항이 학습목표에 연결되었는가(이원목적분류표)
+- [ ] 배점 합계가 목표 총점과 일치하는가
+- [ ] 정답표의 정답이 모든 문항에 대해 작성되었는가
+- [ ] 서술형 부분점수 기준이 채점자 간 편차 없이 명확한가
+- [ ] 객관식에 복수정답·정답 없음·보기 중복이 없는가
+- [ ] 난이도 분포가 의도(상/중/하 비율)와 맞는가
+- [ ] 특정 학생·집단에 불리하거나 편향된 표현이 없는가
+- [ ] 지문·보기의 오탈자와 출처(저작권)를 확인했는가
+
+---
+
+_이 초안은 문항 '내용·정답'을 지어내지 않고 출제의 반복 구조(번호·배점·분류표·정답표·채점기준)를 자동 구성합니다. 각 자리를 채워 완성하세요._</pre>
+
+<footer class="site">
+  <p><a href="../../index.html">← 전체 도구 목록</a></p>
+  <p>무의존성·오프라인·결정론적. · MIT License · 소스: <a href="https://github.com/dasolin139/toolhub">https://github.com/dasolin139/toolhub</a></p>
+</footer>
+
+</main>
+
+</body>
+</html>
